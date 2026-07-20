@@ -1,7 +1,6 @@
-export const dynamic = "force-dynamic";
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import TicketCard from "@/components/TicketCard";
 
@@ -13,9 +12,10 @@ interface Booking {
   qrDataUrl: string | null;
 }
 
-export default function ConfirmationPage() {
+function ConfirmationContent() {
   const searchParams = useSearchParams();
   const groupId = searchParams.get("groupId");
+
   const [booking, setBooking] = useState<Booking | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -24,6 +24,7 @@ export default function ConfirmationPage() {
       setLoading(false);
       return;
     }
+
     fetch(`/api/booking/${groupId}`)
       .then((r) => r.json())
       .then(setBooking)
@@ -32,7 +33,11 @@ export default function ConfirmationPage() {
 
   return (
     <section className="max-w-md mx-auto px-6 py-16">
-      {loading && <p className="text-center text-pitchDark/60">Loading your ticket...</p>}
+      {loading && (
+        <p className="text-center text-pitchDark/60">
+          Loading your ticket...
+        </p>
+      )}
 
       {!loading && !booking?.qrDataUrl && (
         <p className="text-center text-pitchDark/60">
@@ -49,5 +54,13 @@ export default function ConfirmationPage() {
         />
       )}
     </section>
+  );
+}
+
+export default function ConfirmationPage() {
+  return (
+    <Suspense fallback={<p className="text-center">Loading...</p>}>
+      <ConfirmationContent />
+    </Suspense>
   );
 }
