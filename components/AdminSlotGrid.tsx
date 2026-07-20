@@ -40,7 +40,8 @@ export default function AdminSlotGrid({
       <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
         {slots.map((slot) => {
           const isSelectedForBooking = selectedForBooking.includes(slot.time);
-          const isSelectedForCancel = slot.groupId && slot.groupId === selectedGroupId;
+          const isSelectedForCancel =
+            slot.groupId !== undefined && slot.groupId === selectedGroupId;
 
           return (
             <button
