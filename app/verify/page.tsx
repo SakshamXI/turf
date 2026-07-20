@@ -81,7 +81,7 @@ export default function VerifyPage() {
 
     sessionStorage.setItem("turf_email", email);
     sessionStorage.setItem("turf_group_id", holdData.groupId);
-    router.push("/payment");
+    router.push("/confirmation/payment");
   }
 
   // ===== DEV-ONLY BLOCK — safe to delete this whole function before deploying =====
@@ -104,7 +104,7 @@ export default function VerifyPage() {
 
     sessionStorage.setItem("turf_email", useEmail);
     sessionStorage.setItem("turf_group_id", holdData.groupId);
-    router.push("/payment");
+    router.push("/confirmation/payment");
   }
   // ===== END DEV-ONLY BLOCK =====
 
