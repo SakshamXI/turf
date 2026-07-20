@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #F7F5EF;
+  color: #0E2B22;
+}
+
+.btn-primary {
+  @apply bg-pitch text-cream font-display font-medium py-3 px-6 rounded-md
+         transition-all duration-200 ease-out
+         hover:bg-pitchDark hover:scale-[1.03] active:scale-[0.97]
+         disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100;
+}
+
+.btn-outline {
+  @apply border border-cream text-cream font-display font-medium py-3 px-6 rounded-md
+         transition-all duration-200 ease-out
+         hover:bg-cream hover:text-pitchDark hover:scale-[1.03] active:scale-[0.97];
+}
+
+.card {
+  @apply bg-chalk rounded-xl shadow-sm border border-line/10 p-6
+         transition-shadow duration-300 hover:shadow-md;
+}
+
+.section-label {
+  @apply uppercase tracking-widest text-floodlight font-medium text-xs mb-3;
+}
+
+.pitch-lines {
+  background-image:
+    repeating-linear-gradient(90deg, rgba(247,245,239,0.06) 0px, rgba(247,245,239,0.06) 1px, transparent 1px, transparent 64px);
+}
