@@ -34,8 +34,9 @@ export default function OtpInput({ value, onChange, disabled, length = 6 }: Prop
       {digits.map((digit, i) => (
         <input
           key={i}
-          ref={(el) => (inputs.current[i] = el)}
-          type="text"
+          ref={(el) => {
+          inputs.current[i] = el;
+}}
           inputMode="numeric"
           maxLength={1}
           value={digit}
